@@ -27,7 +27,6 @@ export class LoginComponent {
           console.log('Login successful');
           this.router.navigateByUrl('/');
           console.log("call2")
-          this.authService.getCurrentUser().subscribe();
         },
         error: (error) => {
           console.error('Login failed', error);

@@ -9,47 +9,37 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler) : Observable<HttpEvent<any>> {
-    console.log("what")
     return next.handle(request).pipe(
-      catchError(error => {
-        console.log("test",error)
-        if (error instanceof HttpErrorResponse && error.status === 401) {
-          if (!request.url.includes('/login') && !request.url.includes('/refresh')) {
-            return this.handle401Error(request, next);
-          }
-          else {
-            this.authService.logout();
-            return throwError(() => error);
+      catchError((err: HttpErrorResponse) => {
+        console.log("err",err)
+        if (err.status === 400) {
+          if (err.error.errors) {
+            const modelStateErrors = [];
+            for (const key in err.error.errors) {
+              if (err.error.errors[key]) {
+                modelStateErrors.push(err.error.errors[key])
+              }
+            }
+            throw modelStateErrors.flat();
+          } else {
+            //snackbar.error(err.error.title || err.error);
           }
         }
-        else {
-          return throwError(() => error);
+        if (err.status === 401) {
+          //snackbar.error(err.error.title || err.error);
         }
+        if (err.status === 403) {
+          //snackbar.error('Forbidden');
+        }
+        if (err.status === 404) {
+          //router.navigateByUrl('/not-found');
+        }
+        if (err.status === 500) {
+          //const navigationExtras: NavigationExtras = {state: {error: err.error}}
+          //router.navigateByUrl('/server-error', navigationExtras);
+        }
+        return throwError(() => err)
       })
     );
-  }
-
-  private addToken(request: HttpRequest<any>): HttpRequest<any> {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      return request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      });
-    }
-    return request;
-  }
-
-  private handle401Error(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ) : Observable<HttpEvent<any>> {
-    return this.authService.refreshToken().pipe(
-      switchMap(() => {
-        console.log('Token refreshed successfully')
-        return next.handle(this.addToken(request))
-      })
-    )
   }
 }

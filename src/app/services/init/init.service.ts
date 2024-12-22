@@ -10,7 +10,7 @@ export class InitService {
   constructor(private authService: AuthService) { }
 
   init() {
-    console.log("fork");
-    return this.authService.getCurrentUser().subscribe();
+    console.log("running")
+    this.authService.getCurrentUser().subscribe();
   }
 }

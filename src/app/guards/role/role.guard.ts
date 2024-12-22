@@ -12,13 +12,16 @@ export const roleGuard: CanActivateFn = (route, state) => {
   return authService.getCurrentUser().pipe(
     map(currentUser => {
       if(["Admin", role].includes(currentUser.role)){
+        console.log("how")
         return true;
       } else {
+        console.log("???")
         router.navigateByUrl('/unauthorized');
         return false;
       }
     }),
     catchError(() => {
+      console.log("error")
       return of(false);
     })
   )

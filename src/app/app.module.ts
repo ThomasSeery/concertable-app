@@ -9,10 +9,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
-import { VenueComponent } from './pages/venue/venue.component';
-import { AccessTokenInterceptor } from './interceptors/access-token.interceptor';
+import { VenueDashboardComponent } from './pages/venue-dashboard/venue-dashboard.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomerHeaderComponent } from "./components/customer-header/customer-header.component";
+import { YourVenuesComponent } from './pages/your-venues/your-venues.component';
+import { VenueHeaderComponent } from './components/venue-header/venue-header.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,10 @@ import { CustomerHeaderComponent } from "./components/customer-header/customer-h
     LoginComponent,
     HomeComponent,
     AuthLayoutComponent,
-    VenueComponent,
-    CustomerHeaderComponent
+    VenueDashboardComponent,
+    CustomerHeaderComponent,
+    YourVenuesComponent,
+    VenueHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { CustomerHeaderComponent } from "./components/customer-header/customer-h
     provideHttpClient(
       withInterceptorsFromDi()
     ),
-    { provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

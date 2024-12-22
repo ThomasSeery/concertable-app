@@ -12,6 +12,8 @@ export class CustomerHeaderComponent {
   constructor(public authService: AuthService, private router: Router) { }
 
   logout() {
-    this.authService.logout().subscribe(() => this.router.navigateByUrl('/'));
+    console.log("called logout")
+    this.authService.logout().subscribe();
+    this.router.navigateByUrl('/');
   }
 }

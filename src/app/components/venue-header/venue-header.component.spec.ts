@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VenueComponent } from './venue.component';
+import { VenueHeaderComponent } from './venue-header.component';
 
-describe('VenueComponent', () => {
-  let component: VenueComponent;
-  let fixture: ComponentFixture<VenueComponent>;
+describe('VenueHeaderComponent', () => {
+  let component: VenueHeaderComponent;
+  let fixture: ComponentFixture<VenueHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VenueComponent]
+      declarations: [VenueHeaderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VenueComponent);
+    fixture = TestBed.createComponent(VenueHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
