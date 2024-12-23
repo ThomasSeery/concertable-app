@@ -5,14 +5,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { VenueDashboardComponent } from './pages/venue-dashboard/venue-dashboard.component';
 import { roleGuard } from './guards/role/role.guard';
-import { YourVenuesComponent } from './pages/your-venues/your-venues.component';
+import { YourVenueComponent } from './pages/your-venue/your-venue.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'venue', canActivate: [roleGuard], data: { role: 'VenueOwner' }, component: VenueDashboardComponent,
+  { path: 'venue', canActivate: [roleGuard], data: { role: 'VenueManager' }, component: VenueDashboardComponent,
     children: [
-      { path: 'your-venues', component: YourVenuesComponent },
+      { path: 'your-venue', component: YourVenueComponent },
     ] },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

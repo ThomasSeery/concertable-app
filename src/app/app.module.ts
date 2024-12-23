@@ -13,8 +13,10 @@ import { VenueDashboardComponent } from './pages/venue-dashboard/venue-dashboard
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomerHeaderComponent } from "./components/customer-header/customer-header.component";
-import { YourVenuesComponent } from './pages/your-venues/your-venues.component';
 import { VenueHeaderComponent } from './components/venue-header/venue-header.component';
+import { YourVenueComponent } from './pages/your-venue/your-venue.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,11 @@ import { VenueHeaderComponent } from './components/venue-header/venue-header.com
     AuthLayoutComponent,
     VenueDashboardComponent,
     CustomerHeaderComponent,
-    YourVenuesComponent,
-    VenueHeaderComponent
+    YourVenueComponent,
+    VenueHeaderComponent,
+    YourVenueComponent,
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

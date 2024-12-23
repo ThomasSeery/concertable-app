@@ -1,0 +1,9 @@
+@if (authService.currentUser()) {
+    <img *ngIf="authService.currentUser()" 
+        src="" 
+        alt="profile-icon"
+        (click) = "onProfileIconClick()">
+} @else {
+    <a routerLink="/login">Log in</a> / <a routerLink="/login">Register</a>
+}
+

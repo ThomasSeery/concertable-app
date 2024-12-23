@@ -20,8 +20,8 @@ export const roleGuard: CanActivateFn = (route, state) => {
         return false;
       }
     }),
-    catchError(() => {
-      console.log("error")
+    catchError((err) => {
+      console.log(err);
       return of(false);
     })
   )

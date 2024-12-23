@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginRequest } from '../../models/login-request';
+import { LoginCredentials } from '../../models/login-credentials';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -12,13 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   
-  credentials: LoginRequest = {
+  credentials: LoginCredentials = {
     email: '',
     password: ''
     };
   
-  constructor(private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   login() {
     this.authService.login(this.credentials)

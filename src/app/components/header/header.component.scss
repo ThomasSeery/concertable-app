@@ -1,0 +1,29 @@
+:host {
+    display: block;
+    background-color: #f8f9fa;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+nav img {
+    width: 50px;
+}
+
+.header-content {
+    justify-content: end;
+}
+
+.header-content > ul {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+nav ul {
+    list-style-type: none;
+}

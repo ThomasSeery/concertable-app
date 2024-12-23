@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { computed, Injectable, signal } from '@angular/core';
-import { LoginRequest } from '../../models/login-request';
+import { LoginCredentials } from '../../models/login-credentials';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { LoginResponse } from '../../models/login-response';
 import { environment } from '../../../environments/environment';
@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  apiUrl = `${environment.apiUrl}/account`
+  apiUrl = `${environment.apiUrl}/auth`
   currentUser = signal<User | null>(null);
 
   isAdmin = computed(() => {
@@ -23,7 +23,7 @@ export class AuthService {
     return role === "Admin";
   });
 
-  login(credentials: LoginRequest) : Observable<any> {
+  login(credentials: LoginCredentials) : Observable<any> {
     let params = new HttpParams();
     params = params.append('useCookies', true);
     return this.http.post<any>(`${environment.apiUrl}/login`, credentials, { params });
@@ -39,9 +39,9 @@ export class AuthService {
   }
 
   getCurrentUser() : Observable<User> {
-    console.log("withcreds");
     return this.http.get<User>(`${this.apiUrl}/current-user`).pipe(
       map(user => {
+        this.currentUser.set(user);
         return user;
       })
     )
