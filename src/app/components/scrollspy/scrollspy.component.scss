@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    min-height: 200vh;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.content > ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.content > ul > li {
+    margin-right: 20px;
+}

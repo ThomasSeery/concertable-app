@@ -1,0 +1,11 @@
+<!-- @if(!editMode){
+    <app-venue-details></app-venue-details>
+} @else {
+    <div *ngIf="venue">
+        <h1>{{ venue.name }}</h1>
+        <p><strong>About:</strong><input type="text" [(ngModel)]="venue">{{ venue.about }}></p>
+        <img [src]="venue.imageUrl" alt="Venue Image">
+        <app-google-maps></app-google-maps>
+    </div>
+} -->
+

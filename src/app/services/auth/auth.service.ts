@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { computed, Injectable, signal } from '@angular/core';
 import { LoginCredentials } from '../../models/login-credentials';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { LoginResponse } from '../../models/login-response';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user';
 import { RegisterRequest } from '../../models/register-request';
 import { Router } from '@angular/router';
+import { Role } from '../../models/role';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,9 @@ export class AuthService {
 
   logout() : Observable<void> {
     console.log(`${this.apiUrl}/logout`);
-    return this.http.post<void>(`${this.apiUrl}/logout`, {})
+    return this.http.post<void>(`${this.apiUrl}/logout`, {}).pipe(
+      tap(() => this.router.navigateByUrl('/'))
+    )
   }
 
   register(credentials: RegisterRequest) : Observable<void> {
@@ -47,14 +50,12 @@ export class AuthService {
     )
   }
 
-  navigateToUrl() : void {
-    console.log("123")
-    this.getCurrentUser().subscribe((user) => {
-      console.log(user);
-      const role = user.role;
-      if(role === "VenueOwner") {
-        this.router.navigateByUrl('/venues');
-      }
-    })
+  navigateByRole(role: Role) : void {
+    if (role === Role.VenueManager)
+      this.router.navigateByUrl('/venue');
+  }
+
+  matchesRole(role: Role) : boolean {
+    return this.currentUser()?.role === role;
   }
 }

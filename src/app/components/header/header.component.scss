@@ -3,7 +3,7 @@
     background-color: #f8f9fa;
 }
 
-.header-container {
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,16 +14,13 @@ nav img {
     width: 50px;
 }
 
-.header-content {
+.content {
     justify-content: end;
 }
 
-.header-content > ul {
+.content > ul {
     display: flex;
     flex-direction: row;
     gap: 16px;
-}
-
-nav ul {
     list-style-type: none;
 }

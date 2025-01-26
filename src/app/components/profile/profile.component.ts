@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +14,15 @@ import { AuthService } from '../../services/auth/auth.service';
 export class ProfileComponent {
   constructor(protected authService: AuthService) { }
 
-  onProfileIconClick() {
+  onProfile() {
 
+  }
+
+  onEditProfile() {
+
+  }
+
+  onLogOut() : void {
+    this.authService.logout().subscribe();
   }
 }

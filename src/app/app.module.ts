@@ -17,6 +17,20 @@ import { VenueHeaderComponent } from './components/venue-header/venue-header.com
 import { YourVenueComponent } from './pages/your-venue/your-venue.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
+import { VenueDetailsComponent } from './components/venue-details/venue-details.component';
+import { ConfigHeaderComponent } from './components/config-header/config-header.component';
+import { ConfigButtonComponent } from './components/config-button/config-button.component';
+import { ListingComponent } from './components/listing/listing.component';
+import { ListingsComponent } from './components/listings/listings.component';
+import { EditableVenueDetailsComponent } from './components/editable-venue-details/editable-venue-details.component';
+import { DetailsComponent } from './components/details/details.component';
+import { ScrollspyComponent } from './components/scrollspy/scrollspy.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,12 +44,24 @@ import { ProfileComponent } from './components/profile/profile.component';
     VenueHeaderComponent,
     YourVenueComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    GoogleMapsComponent,
+    VenueDetailsComponent,
+    ConfigHeaderComponent,
+    ConfigButtonComponent,
+    ListingComponent,
+    EditableVenueDetailsComponent,
+    DetailsComponent,
+    ScrollspyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatMenuModule,
+    GoogleMapsModule,
+    CommonModule
 ],
   providers: [
     provideHttpClient(
@@ -43,6 +69,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

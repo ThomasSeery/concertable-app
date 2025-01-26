@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { VenueService } from '../../services/venue/venue.service';
+import { Venue } from '../../models/venue';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-your-venue',
@@ -10,10 +12,18 @@ import { VenueService } from '../../services/venue/venue.service';
 })
 export class YourVenueComponent implements AfterViewInit {
 
-  constructor(private venueService: VenueService) { }
+  protected venue: Venue | undefined;
+  protected editMode: boolean = false;
+  constructor(protected venueService: VenueService) { }
+
+  onEditModeChange(newValue: boolean) {
+    this.editMode = newValue;
+  }
 
   ngAfterViewInit(): void {
-    console.log("yourvenue");
-    this.venueService.getUserVenue().subscribe((venue) => console.log(venue));
+    this.venueService.getUserVenue().subscribe((venue) => {
+      console.log(venue);
+      this.venue = venue
+    });
   }
 }

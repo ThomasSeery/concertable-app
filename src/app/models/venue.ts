@@ -1,10 +1,10 @@
+import { Coordinates } from "./coordinates";
+
 export interface Venue {
     id: number;
-    listingId: number;
     name: string;
     about: string;
-    longitude: string;
-    latitude: string;
+    coordinates: Coordinates
     imageUrl: string;
     county: string;
     town: string

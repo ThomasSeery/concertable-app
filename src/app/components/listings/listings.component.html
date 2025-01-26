@@ -1,0 +1,18 @@
+<table class="listings-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Pay</th>
+            <th>Genres of Interest</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let listing of listings">
+            <!-- <td>{{ listing?.startDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{ listing?.startDate | date:'shortTime'}} - {{ listing?.endDate | date:'shortTime' }}</td> -->
+            <td>£{{ listing?.pay }}</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
