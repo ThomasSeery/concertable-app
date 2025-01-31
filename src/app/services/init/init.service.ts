@@ -14,7 +14,7 @@ export class InitService {
     this.authService.getCurrentUser().subscribe((user) =>
     {
       console.log(user);
-      this.authService.navigateByRole(user.role)
+      //this.authService.navigateByRole(user.role)
     }
     );
   }

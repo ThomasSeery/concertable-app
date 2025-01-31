@@ -3,4 +3,5 @@ export interface Listing {
     startDate : Date;
     endDate: Date;
     pay: number;
+    genres: string[];
 }

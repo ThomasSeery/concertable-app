@@ -30,7 +30,7 @@ import { ListingsComponent } from './components/listings/listings.component';
 import { EditableVenueDetailsComponent } from './components/editable-venue-details/editable-venue-details.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ScrollspyComponent } from './components/scrollspy/scrollspy.component';
-import { CommonModule } from '@angular/common';
+import { VenueEventsComponent } from './components/venue-events/venue-events.component';
 
 @NgModule({
   declarations: [
@@ -49,10 +49,12 @@ import { CommonModule } from '@angular/common';
     VenueDetailsComponent,
     ConfigHeaderComponent,
     ConfigButtonComponent,
+    ListingsComponent,
     ListingComponent,
     EditableVenueDetailsComponent,
     DetailsComponent,
-    ScrollspyComponent
+    ScrollspyComponent,
+    VenueEventsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +62,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatIconModule,
     MatMenuModule,
-    GoogleMapsModule,
-    CommonModule
+    GoogleMapsModule
 ],
   providers: [
     provideHttpClient(

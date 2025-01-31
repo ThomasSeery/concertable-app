@@ -1,4 +1,5 @@
 import { Coordinates } from "./coordinates";
+import { Listing } from "./listing";
 
 export interface Venue {
     id: number;
@@ -7,6 +8,7 @@ export interface Venue {
     coordinates: Coordinates
     imageUrl: string;
     county: string;
-    town: string
+    town: string;
+    listings?: Listing[];
     approved: boolean;
 }

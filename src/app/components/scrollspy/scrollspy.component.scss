@@ -1,24 +1,23 @@
-:host {
-    display: block;
-    background-color: #f8f9fa;
-}
-
 .container {
     display: flex;
-    min-height: 200vh;
     position: sticky;
-    top: 0px;
+    top: 0;
     z-index: 100;
+    background-color: #f8f9fa;
+    padding: 10px;
     justify-content: center;
     align-items: center;
-    padding: 0 10px;
-}
-
-.content > ul {
+  }
+  
+  .container > ul {
     display: flex;
-    list-style-type: none;
-}
-
-.content > ul > li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+  
+  .container > ul > li {
     margin-right: 20px;
-}
+  }
+  

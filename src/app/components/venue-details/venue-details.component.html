@@ -1,24 +1,50 @@
-<app-scrollspy [navs]="['hi','bye']"></app-scrollspy>
-<div *ngIf="venue">
-    <h1>{{ venue.name }}</h1>
-    <p><strong>About:</strong> {{ venue.about }}</p>
-    <img [src]="venue.imageUrl" alt="Venue Image">
-    <app-google-maps></app-google-maps>
-    Lorem ipsum odor amet, consectetuer adipiscing elit. Ullamcorper ipsum pharetra leo semper dui curae rutrum proin cubilia. Tempus inceptos pulvinar amet aliquam nec egestas. Nulla sociosqu placerat eleifend fermentum nascetur. Aenean facilisi fermentum aenean sodales consequat vivamus proin. Efficitur metus curae primis magna est eros potenti. Ut taciti interdum vestibulum pharetra lacus proin mi orci diam. Felis vulputate at penatibus orci penatibus dis ac. Cubilia velit tempor vitae; quisque montes ante integer suscipit imperdiet.
+<app-scrollspy [navItems]="navItems"></app-scrollspy>
+<div class="container" *ngIf="venue">
+    <section class="info">
+        <h2 class="heading-venue">Venue Information</h2>
 
-Pulvinar lobortis parturient; nibh vulputate laoreet consectetur. Molestie iaculis odio curae nibh dolor felis tempus posuere. Maximus efficitur sociosqu integer, iaculis habitasse felis porttitor. Et auctor imperdiet lectus eros vitae ridiculus potenti non in. Donec donec placerat cubilia pellentesque ultricies porttitor arcu eros. Aenean augue cubilia non ut pellentesque tortor. Maecenas viverra lacinia dignissim interdum efficitur massa. Sem efficitur eu rutrum sem litora lacus! Enim morbi a viverra dis sapien risus suspendisse.
+        @if (!editMode) {
+            <h3 class="heading-name">{{ venue.name }}</h3>
+            <p class="text-about">{{ venue.about }}</p>
+            <img [src]="venue.imageUrl" alt="Venue Image" class="img-venue">
+        } @else {
+            <input type="text" [(ngModel)]="venue.name" class="input-name" placeholder="Venue Name" />
+            <textarea [(ngModel)]="venue.about" class="textarea-about" placeholder="Venue Description"></textarea>
+            <input type="text" [(ngModel)]="venue.imageUrl" class="input-image" placeholder="Image URL" />
+        }
 
-Rutrum tortor ultrices lacinia interdum litora. Aliquet class platea potenti turpis dictumst etiam. Libero enim torquent luctus vulputate tincidunt leo tincidunt molestie inceptos. Vitae proin felis enim facilisi dolor donec aliquet. Id quis fames pharetra efficitur consequat. Elit facilisi nascetur purus mollis ultricies ligula porttitor semper. Sem interdum lectus phasellus ad habitant lacus dapibus viverra commodo.
+        <div class="location">
+            <img src="assets/images/map-pin.png">
+            @if (!editMode) {
+                <p class="text-location">{{ venue.county }}, {{ venue.town }}</p>
+            } @else {
+                <input type="text" [(ngModel)]="venue.county" class="input-county" placeholder="County">
+                <input type="text" [(ngModel)]="venue.town" class="input-town" placeholder="Town">
+            }
+        </div>
 
-Lorem sociosqu venenatis turpis placerat orci nisl pulvinar. Pharetra facilisis ante quis nibh euismod. Magna gravida habitasse vestibulum mus justo? Feugiat mi eu, rhoncus leo donec magnis. Et fames tristique, congue senectus nisi congue. Nisi cursus montes gravida etiam iaculis luctus enim feugiat luctus. Aliquet maecenas torquent tincidunt justo ipsum adipiscing sapien sodales. Aliquet imperdiet ac at aenean urna pellentesque iaculis varius.
+        <app-google-maps></app-google-maps>
+    </section>
 
-Sit tristique velit mollis netus congue aptent semper vulputate. Nisi natoque volutpat taciti turpis ut suscipit hac eros. Vel dignissim nulla facilisi diam himenaeos. Metus vivamus augue class habitasse amet rutrum venenatis luctus. Faucibus nec euismod consectetur donec nam sodales torquent. Commodo duis vehicula sem duis enim tempus. Pulvinar sollicitudin nibh nunc primis cursus sollicitudin viverra montes posuere. Rutrum porttitor fusce condimentum pharetra condimentum cras sollicitudin. Enim enim lacinia euismod quis sed. Mus orci hac urna tellus platea platea nulla.
+    @if (venue.about) {
+        <section class="events">
+            <h2 class="heading-events">Upcoming Events</h2>
+            <app-venue-events [venue]="venue" />
+        </section>
+    }
 
-Pulvinar justo vestibulum iaculis vulputate gravida dis. Ridiculus fermentum sollicitudin ipsum nisl quis nascetur. Viverra nunc mattis pretium eget laoreet auctor arcu. Mus vestibulum porta cursus sodales nibh eu lacinia; mattis convallis. Inceptos nec eget quisque elementum platea cursus. Orci inceptos ligula magna interdum ridiculus velit efficitur.
+    <section class="videos">
+        <h2 class="heading-videos">Videos</h2>
+    </section>
 
-Ornare conubia elit sed neque nulla dolor etiam fermentum. Suspendisse id tortor nulla libero leo proin laoreet. Nam ex mi metus facilisi risus vehicula vivamus habitasse facilisi. Cubilia aenean aenean vulputate efficitur cubilia luctus id dui parturient. At nulla egestas lectus arcu; blandit eleifend et. Fermentum magna vivamus aptent fusce ipsum. Pretium sed lacus nisi sit arcu himenaeos, suspendisse sagittis.
+    <section class="reviews">
+        <h2 class="reviews">Reviews</h2>
+    </section>
 
-Hendrerit penatibus ut nullam magnis montes malesuada ultrices et. Cubilia cursus elementum suscipit ullamcorper fusce fermentum himenaeos finibus. Facilisis mollis rutrum tellus vivamus tristique vulputate. Quisque sed facilisis quam cubilia; porta montes. Vehicula hac mus, convallis penatibus dignissim hendrerit. Metus dignissim montes tincidunt inceptos neque malesuada suspendisse. Augue quis pharetra imperdiet risus dis risus fermentum.
-
-Ante torquent nullam aliquam ultricies sodales commodo sociosqu. Sollicitudin egestas et turpis a mollis adipiscing nulla fringilla. Facilisis tempor laoreet libero; inceptos aenean faucibus. Vehicula varius metus malesuada nec justo tempor. Massa auctor aliquet porta justo fermentum massa. Blandit nunc viverra feugiat nam metus lacinia porttitor facilisis molestie. Porttitor inceptos posuere laoreet mauris et vivamus. Lectus pharetra senectus facilisi sed suscipit augue viverra.
+    @if (authService.isNotRole('Customer')) {
+        <section class="listings">
+            <h2 class="heading-listings">Listings</h2>
+            <app-listings [venue]="venue" />
+        </section>
+    }
 </div>

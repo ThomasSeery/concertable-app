@@ -3,6 +3,7 @@ import { ListingService } from '../../services/listing/listing.service';
 import { Venue } from '../../models/venue';
 import { of } from 'rxjs';
 import { Listing } from '../../models/listing';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-listings',
@@ -16,7 +17,7 @@ export class ListingsComponent  implements OnChanges {
   @Input() editMode?: boolean
   protected listings?: Listing[]
 
-  constructor(private listingService: ListingService) { }
+  constructor(private listingService: ListingService, protected authService: AuthService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['venue'])
@@ -25,15 +26,16 @@ export class ListingsComponent  implements OnChanges {
 
   getListings() {
     console.log("getActiveListings");
-    console.log(this.venue);
     if(this.venue?.id) 
-      this.listingService.getActiveListingsByVenueId(this.venue.id).subscribe((listingsResponse) => {console.log(listingsResponse); this.listings = listingsResponse})
+      this.listingService.getActiveListingsByVenueId(this.venue.id).subscribe((listingsResponse) => {console.log("y",listingsResponse); this.listings = listingsResponse})
   }
 
   createListing(listing: Listing) {
     this.listingService.createListing(listing).subscribe();
   }
 
-  
+  onDelete(listing: Listing) {
+
+  }
   
 }

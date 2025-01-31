@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { NavItem } from '../../models/nav-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scrollspy',
@@ -8,5 +10,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './scrollspy.component.scss'
 })
 export class ScrollspyComponent {
-  @Input() navs: string[] = [];
+  @Input() navItems: NavItem[] = [];
+
 }

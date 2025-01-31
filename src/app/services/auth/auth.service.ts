@@ -19,10 +19,8 @@ export class AuthService {
   apiUrl = `${environment.apiUrl}/auth`
   currentUser = signal<User | null>(null);
 
-  isAdmin = computed(() => {
-    const role = this.currentUser()?.role;
-    return role === "Admin";
-  });
+  isRole = (role: string) => this.currentUser()?.role === role;
+  isNotRole = (role: string) => this.currentUser()?.role !== role;
 
   login(credentials: LoginCredentials) : Observable<any> {
     let params = new HttpParams();
